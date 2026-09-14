@@ -1,0 +1,60 @@
+.search-form {
+  width: 100%;
+  direction: ltr; 
+}
+
+.search-input-wrapper {
+  display: flex;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 10px;
+  border-radius: 50px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+  
+}
+
+/* تأثير عند الضغط والكتابة جوه السيرش بار */
+.search-input-wrapper:focus-within {
+  border-color: #3b82f6;
+  box-shadow: 0 8px 32px 0 rgba(59, 130, 246, 0.5);
+  transform: scale(1.02);
+}
+
+.main-search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 15px 25px;
+  font-size: 1.3rem;
+  color: #fff;
+  font-family: inherit;
+}
+
+.main-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* زرار إكسبلور الكبير */
+.explore-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 0 35px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.explore-btn:hover {
+  background: #2563eb;
+}
+
+.explore-btn:active {
+  transform: scale(0.95);
+}

@@ -1,0 +1,358 @@
+.animate-fade-in-left {
+  animation: fadeInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.animate-fade-in-right {
+  animation: fadeInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.weather-page-container {
+  width: 100%;
+  min-height: 100vh;
+  background: radial-gradient(circle at 50% 50%, #f4f5f7 0%, #e2e5e9 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.weather-dashboard {
+  width: 100%;
+  max-width: 1240px;
+  height: 780px;
+  background-color: #ffffff;
+  border-radius: 40px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.06);
+}
+
+.weather-sidebar {
+  width: 30%;
+  background-color: #ffffff;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #f0f1f4;
+}
+
+.weather-icon-wrapper {
+  position: relative;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.big-sun {
+  width: 110px;
+  height: 110px;
+  background: linear-gradient(135deg, #ffcc33 0%, #ff9900 100%);
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0 0 35px 15px rgba(255, 174, 0, 0.4), 0 0 65px 30px rgba(255, 204, 51, 0.2);
+  animation: sunRadiance 4s ease-in-out infinite alternate;
+}
+
+@keyframes sunRadiance {
+  0% { box-shadow: 0 0 35px 15px rgba(255, 174, 0, 0.4), 0 0 65px 30px rgba(255, 204, 51, 0.2); transform: scale(1); }
+  100% { box-shadow: 0 0 50px 25px rgba(255, 174, 0, 0.6), 0 0 85px 45px rgba(255, 204, 51, 0.3); transform: scale(1.03); }
+}
+
+.current-degree {
+  font-size: 4.8rem;
+  font-weight: 300;
+  color: #3b82f6; 
+  margin: 15px 0 5px 0;
+}
+.current-degree .unit { font-size: 2.2rem; font-weight: 400; color: #3b82f6; margin-left: 2px; }
+.current-day-time { font-size: 1.1rem; color: #1a1a1a; margin: 0; font-weight: 500; }
+.time-blur { color: #a0a5b0; }
+.sidebar-divider { border: none; border-top: 1px solid #eeeff2; width: 100%; margin: 25px 0; }
+.weather-condition-details { display: flex; flex-direction: column; gap: 18px; flex-grow: 1; }
+.condition-item { display: flex; align-items: center; gap: 15px; font-size: 1rem; color: #4a5568; font-weight: 500; }
+.emoji-icon { font-size: 1.3rem; }
+
+.sidebar-description-text { text-transform: capitalize; }
+.last-updated-row { font-size: 0.9rem; color: #7a8290; font-weight: 400; font-style: italic; }
+
+.city-card-bg {
+  width: 100%;
+  height: 260px; /* الارتفاع الجميل اللي اخترتيه */
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  margin-top: auto;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.4s ease;
+}
+
+/* تأثير تكبير خفيف للكارت نفسه عند الـ Hover */
+.city-card-bg:hover {
+  transform: scale(1.02);
+}
+
+/* التعديل الجوهري: إخفاء الـ Overlay في الحالة الطبيعية */
+.city-overlay { 
+  position: absolute; 
+  width: 100%; 
+  height: 100%; 
+  background-color: rgba(0, 0, 0, 0.4); /* طبقة تعتيم إضافية تظهر مع الـ Hover */
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  color: #ffffff; 
+  font-weight: 600; 
+  font-size: 1.3rem; 
+  letter-spacing: 0.5px; 
+  
+  /* جعل التكست والطبقة مخفيين ونازلين لتحت سنة */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease; 
+}
+
+/* إظهار الـ Overlay وسحب التكست بنعومة عند الـ Hover على الكارت */
+.city-card-bg:hover .city-overlay { 
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.weather-main-content {
+  width: 70%;
+  background-color: #60a5dd7c;
+  padding: 45px 50px;
+  display: flex;
+  flex-direction: column;
+}
+.main-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 35px; }
+.section-title { font-size: 1.5rem; font-weight: 600; color: #89cff0; margin: 0; }
+.unit-toggle { display: flex; gap: 12px; }
+.unit-toggle span { width: 38px; height: 38px; background-color: #ffffff; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 0.95rem; font-weight: 600; cursor: pointer; box-shadow: 0 4px 10px rgba(249, 249, 252, 0.03); }
+.unit-toggle .active-unit { background-color: #477ba57c; color: #ffffff; }
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  flex-grow: 1;
+}
+
+.highlight-card {
+  background-color: #ffffff;
+  border-radius: 26px;
+  padding: 30px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.005);
+  box-sizing: border-box;
+  height: 100%;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+.highlight-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.card-header-with-icon { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+
+.card-label { 
+  font-size: 1.1rem; 
+  color: #64748b; 
+  margin: 0; 
+  font-weight: 500; 
+}
+
+.card-value { font-size: 2.3rem; font-weight: 600; color: #3b82f6; margin: 15px 0 8px 0; }
+.value-unit { font-size: 1.1rem; font-weight: 500; color: #3b82f6; margin-left: 3px; }
+.card-sub-value { font-size: 0.95rem; color: #4a5568; margin: 0; font-weight: 500; }
+
+.value-unit-grey { font-size: 1.1rem; font-weight: 500; color: #94a3b8; margin-left: 3px; }
+
+.card-icon-colored { width: 32px; height: 32px; }
+
+.pressure-arrows-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+.arrow-down-press {
+  position: absolute;
+  top: -2px;
+  width: 24px;
+  height: 24px;
+  animation: pressDown 1.5s ease-in-out infinite;
+}
+.arrow-up-press {
+  position: absolute;
+  bottom: -2px;
+  width: 24px;
+  height: 24px;
+  animation: pressUp 1.5s ease-in-out infinite;
+}
+@keyframes pressDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+@keyframes pressUp {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.gradient-text-pressure { 
+  color: #3b82f6 !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+}
+
+.text-blue { color: #3b82f6 !important; } 
+.text-gold { color: #3b82f6 !important; } 
+
+.rotate-wind { 
+  animation: spinFan 6s linear infinite; 
+  stroke: #3b82f6 !important; 
+}
+.rotate-wind path, .rotate-wind circle {
+  stroke: #3b82f6 !important;
+  fill: none;
+}
+@keyframes spinFan { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.pulse-glow-gold { animation: goldPulse 2s infinite alternate; }
+@keyframes goldPulse { from { transform: scale(1); filter: drop-shadow(0 0 2px #3b82f6); } to { transform: scale(1.1); filter: drop-shadow(0 0 8px #3b82f6); } }
+
+.pulse-drop { animation: dropPulse 2.5s infinite ease-in-out; }
+@keyframes dropPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); filter: drop-shadow(0 4px 6px rgba(59,130,246,0.25)); } }
+
+.pulse-eye { animation: eyePulse 3s infinite alternate; }
+@keyframes eyePulse { from { transform: scale(1); } to { transform: scale(1.08); } }
+
+.sun-schedule { display: flex; flex-direction: column; gap: 25px; margin-top: 10px; }
+.sun-time-row { display: flex; align-items: center; gap: 40px; font-size: 1.1rem; font-weight: 600; color: #1a1a1a; }
+
+.sun-schedule-top { margin-top: -20px; gap: 40px; }
+.sun-arrow { 
+  width: auto; height: auto; border-radius: 0; background: none !important; box-shadow: none !important; 
+  display: flex; justify-content: center; align-items: center; font-size: 1.5rem; 
+}
+.sunrise-gold { background: none !important; }
+.sunset-orange { background: none !important; }
+
+.sun-type-text { font-size: 0.95rem; color: #64748b; font-weight: 500; margin-right: auto; }
+
+.time-highlight { font-weight: 600; color: #3b82f6; }
+
+.uv-gauge-container { 
+  display: flex; justify-content: center; align-items: flex-start; 
+  width: 100%; height: 85px; margin-top: 25px; position: relative; overflow: hidden; 
+}
+.uv-gauge { 
+  position: relative; width: 150px; height: 150px; border-radius: 50%; border: 12px solid #eef0f3; box-sizing: border-box; 
+}
+.uv-gauge::before { 
+  content: ''; position: absolute; top: -12px; left: -12px; width: 150px; height: 150px; 
+  border-radius: 50%; border: 12px solid #ff9821; border-bottom-color: transparent; border-left-color: transparent;
+  box-sizing: border-box; transform-origin: center center; transform: rotate(-140deg); 
+}
+.gauge-number { 
+  position: absolute; 
+  /* استخدمنا top بدلاً من bottom لتثبيت الرقم في سنتر القوس الظاهر دون التحدد بالقص السفلي */
+  top: 32px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  font-size: 2.4rem; 
+  font-weight: 600; 
+  color: #f6ab3b; /* الأزرق المطلوب المتناسق مع الأرقام */
+  line-height: 1;
+}
+
+.loader-screen { width: 100vw; height: 100vh; background-color: #ffffff; display: flex; flex-direction: column; justify-content: center; align-items: center; font-family: inherit; gap: 20px; font-size: 1.2rem; font-weight: 500; color: #1a1a1a; }
+.spinner { width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid #3b82f6; border-radius: 50%; animation: spin 1s linear infinite; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+@keyframes shineGoAndBack {
+  0% { background-position: 100% center; }
+  50% { background-position: 0% center; }
+  100% { background-position: 100% center; }
+}
+
+.section-title.shimmer-text {
+  font-size: 1.6rem; font-weight: 600; margin: 0;
+  background: linear-gradient(90deg, #89cff0 0%, #0657ee 40%, #67a7f0 50%, #1326d1 60%, #89cff0 100%);
+  background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  animation: shineGoAndBack 3.5s linear infinite;
+}
+.back-to-home-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #64748b; /* لون رمادي هادي يتناسق مع التصميم */
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 20px;
+  align-self: flex-start; /* يخليه ييجي على الشمال أو البداية */
+  transition: all 0.2s ease-in-out;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.4); /* خلفية خفيفة جداً */
+}
+
+.back-to-home-btn:hover {
+  color: #3b82f6; /* يقلب أزرق وقت الهوفر */
+  background: rgba(59, 130, 246, 0.1); /* تأثير ناعم عند الوقوف عليه */
+  transform: translateX(-4px); /* حركة خفيفة جهة السهم لورا */
+}
+
+/* لو الـ Sidebar الأيسر عندك فليكس دايركشن column، تأكدي إن الزرار مش واخد عرض كامل */
+.weather-sidebar {
+  display: flex;
+  flex-direction: column;
+  /* ستايل السايدبار الحالي بتاعك... */
+}
+.go-to-forecast-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #3b82f6; /* لون أزرق براند */
+  font-weight: 600;
+  font-size: 14px;
+  background: rgba(59, 130, 246, 0.1); /* خلفية زرقاء شفافة جداً */
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.go-to-forecast-btn:hover {
+  background: #3b82f6;
+  color: #ffffff; /* يقلب أبيض عند الهوفر */
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+  transform: translateX(4px); /* حركة خفيفة توديكِ لليمين اتجاه الصفحة الجديدة */
+}
+
+.go-to-forecast-btn svg {
+  transition: transform 0.2s;
+}
+
+.go-to-forecast-btn:hover svg {
+  transform: translateX(2px);
+}

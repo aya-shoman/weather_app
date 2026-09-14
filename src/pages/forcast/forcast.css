@@ -1,0 +1,32 @@
+.forecast-page-wrapper { padding: 40px; color: white; background: #112657; min-height: 100vh; }
+
+.forecast-cards-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+  gap: 20px; 
+  margin-bottom: 40px; 
+}
+
+.forecast-card-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.forecast-card-item:hover { background: rgba(255, 255, 255, 0.15); transform: translateY(-5px); }
+
+.card-header { display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 10px; }
+
+.card-temp { font-size: 2rem; margin: 10px 0; }
+
+.card-details { 
+  display: flex; justify-content: space-around; margin-top: 15px; 
+  font-size: 0.85rem; color: #94a3b8; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px;
+}
+
+.chart-title { margin-bottom: 20px; font-weight: 300; color: #cbd5e1; }
+
+.back-to-dash-btn { color: #3b82f6; text-decoration: none; display: block; margin-bottom: 20px; }
