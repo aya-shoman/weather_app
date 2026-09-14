@@ -78,18 +78,4 @@ API Rate Limiting During Live Presentations: Free-tier external APIs are prone t
 * **Push Notifications:** Alerting users in real-time regarding critical or severe incoming weather alerts.
 
 ---
-
-## 👥 Team Members
-* **Aya Shoman** - Frontend & Logic Developer
-* **Nada Reda** - UI/UX Designer & Frontend Developer
-* **Menna Shaker** - QA Engineer & Software Tester
-* **Maximos Helmy** - Core Logic & API Integration Specialist
-* **Adel Abdelhalim** - Presentation & Documentation Specialist
-
----
-
-## 🎬 Project Demo Video
-[Click here to watch the full project presentation and walkthrough video](YOUR_VIDEO_LINK_HERE)
-
----
 <p align="center">Developed with passion under the supervision of the Digital Egypt Pioneers Initiative (DEPI) / ITC 🇪🇬</p>
